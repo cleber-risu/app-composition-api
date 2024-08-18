@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, computed, watch } from 'vue';
+import { defineProps, ref, computed, watch, toRefs } from 'vue';
 
 import ProjectItem from './ProjectItem.vue';
 
@@ -35,7 +35,9 @@ watch(enteredSearchTerm, (val) => {
   }, 300);
 });
 
-watch(props.user, () => {
+const { user } = toRefs(props);
+
+watch(user, () => {
   enteredSearchTerm.value = '';
 });
 
